@@ -3,40 +3,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Uti-Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1> Uti-Calculator </h1>
-
     <p>bana gunun sonunda toplamda kac saat ve kac dakika srt'de kalacagini soyle (lunch break haric),</p>
     <p>sana utilization'inin %85 uzeri olmasi icin production'da kalman gereken sureyi soyleyeyim. </p>
-
     <form name="formcalc">
         Saat: <input type="text" name="txtnum1">
-        <br>
-        <br>
+        <br><br>
         Dakika: <input type="text" name="txtnum2">
         <br>
         <p>ornegin toplamda 6.5 saat srt'de kalacaksan, saat kismina 6, dakika kismina 30 yaz.</p>
         <input type="button" value="Hesapla" onclick="takepercentage()">
         <br>
-        <br>
-        Production'da gecirmen gereken surenin saati: <input type="text" name="hours">
-        <br>
-        <br>
-        Production'da gecirmen gereken surenin dakikasi: <input type="text" name="minutes">
+        <p id = "mesaj">.</p>
+        <p>...by ugur kaslan...</p>
     </form>
     <script type="text/javascript">
         function takepercentage(){
-            var num1, num2, promins, saat, dakika;
-            num1 = Number(document.formcalc.txtnum1.value);
-            num2 = Number(document.formcalc.txtnum2.value);
-            promins = (num1 * 60 + num2) * 0.85 ;
-            saat = Math.floor(promins / 60);
-            dakika = promins - (saat * 60);
-            document.formcalc.hours.value = saat;
-            document.formcalc.minutes.value = dakika;
+            let num1 = Number(document.formcalc.txtnum1.value);
+            let num2 = Number(document.formcalc.txtnum2.value);
+            let promins = (num1 * 60 + num2) * 0.85 ;
+            let saat = Math.floor(promins / 60);
+            let dakika = Math.ceil(promins - (saat * 60));
+            mesaj.innerHTML = "Production'da gecirmen gereken minimum sure " + saat + " saat " + dakika + " dakika.";
         }
     </script>
 </body>
